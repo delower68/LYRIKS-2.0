@@ -21,7 +21,6 @@ const Discover = () => {
     return <Error message="Failed to fetch data. Please try again later." />;
   }
 
-  console.log(data)
 
   return (
     <div className="flex flex-col">
