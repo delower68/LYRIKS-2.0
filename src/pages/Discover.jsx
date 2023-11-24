@@ -1,16 +1,16 @@
-import React from "react";
-import { Error, Loader, SongCard } from "../components";
-import { genres } from "../assets/constants";
-import { useGetWorldChartsQuery } from "../redux/services/shazamCore";
-import { useDispatch , useSelector} from "react-redux";
-
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Error, Loader, SongCard } from '../components';
+import { genres } from '../assets/constants';
+import { useGetWorldChartsQuery } from '../redux/services/shazamCore';
 
 const Discover = () => {
-    const dispatch = useDispatch();
-    const {activeSong, isPlaying}= useSelector((state)=>state.player);
+  const dispatch = useDispatch();
+  const { activeSong, isPlaying } = useSelector((state) => state.player);
   const { data, isFetching, error } = useGetWorldChartsQuery();
-  const genreTitle = "pop";
+  const genreTitle = 'pop';
 
+  console.log(data?.tracks);
   // Loading state
   if (isFetching) {
     return <Loader />;
@@ -28,7 +28,7 @@ const Discover = () => {
           Discover {genreTitle}
         </h2>
         <select
-        onChange={()=>{}}
+          onChange={() => {}}
           value=""
           className="bg-black text-gray-300 p-3 text-sm rounded-lg outline-none sm:mt-0 mt-5"
         >
@@ -39,12 +39,15 @@ const Discover = () => {
           ))}
         </select>
         <div className="flex flex-wrap sm:justify-start justify-center gap-8">
-          {data?.map((song, i) => (
-            <SongCard key={song.key} song={song} 
-            isPlaying = {isPlaying}
-            activeSong = {activeSong}
-            data= {data}
-            i={i} />
+          {data?.tracks?.map((song, i) => (
+            <SongCard
+              key={song.key}
+              song={song}
+              isPlaying={isPlaying}
+              activeSong={activeSong}
+              data={data}
+              i={i}
+            />
           ))}
         </div>
       </div>
