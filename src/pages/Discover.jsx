@@ -10,7 +10,7 @@ const Discover = () => {
   const { data, isFetching, error } = useGetWorldChartsQuery();
   const genreTitle = 'pop';
 
-  console.log(data?.tracks);
+  console.log(data);
   // Loading state
   if (isFetching) {
     return <Loader />;
@@ -45,7 +45,7 @@ const Discover = () => {
               song={song}
               isPlaying={isPlaying}
               activeSong={activeSong}
-              data={data}
+              data={data?.tracks}
               i={i}
             />
           ))}
