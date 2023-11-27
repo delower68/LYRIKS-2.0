@@ -18,7 +18,8 @@ export const shazamCoreApi = createApi({
     getWorldCharts: builder.query({
       query: () => 'charts/track?locale=en-US&pageSize=20&startFrom=0', // Adjust the query string
     }),
+    getSongDetails: builder.query({query: ({id}) => `/track/details?track_id=${id}`}),
   }),
 });
 
-export const { useGetWorldChartsQuery } = shazamCoreApi;
+export const { useGetWorldChartsQuery, useGetSongDetails } = shazamCoreApi;

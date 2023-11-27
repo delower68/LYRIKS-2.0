@@ -10,7 +10,7 @@ const Discover = () => {
   const { data, isFetching, error } = useGetWorldChartsQuery();
   const genreTitle = 'pop';
 
-  console.log(data);
+  console.log(data?.tracks);
   // Loading state
   if (isFetching) {
     return <Loader />;
@@ -23,14 +23,15 @@ const Discover = () => {
 
   return (
     <div className="flex flex-col">
-      <div className="w-full flex justify-between items-center sm:flex-row flex-col mt-4 mb-10">
-        <h2 className="font-bold text-3xl text-white text-left">
-          Discover {genreTitle}
+      <div className="w-full lg:flex justify-between items-center flex-row lg:flex-col mt-4 mb-10">
+        <h2 className="font-bold text-3xl text-white text-center">
+          Discover 
         </h2>
+        <div className='flex justify-center'>
         <select
           onChange={() => {}}
           value=""
-          className="bg-black text-gray-300 p-3 text-sm rounded-lg outline-none sm:mt-0 mt-5"
+          className="bg-black text-gray-300 p-3 text-sm  rounded-lg outline-none sm:mt-0 mt-5 mb-3"
         >
           {genres.map((genre) => (
             <option key={genre.value} value={genre.value}>
@@ -38,7 +39,8 @@ const Discover = () => {
             </option>
           ))}
         </select>
-        <div className="flex flex-wrap sm:justify-start justify-center gap-8">
+        </div>
+        <div className="flex flex-wrap justify-start lg:justify-center gap-8">
           {data?.tracks?.map((song, i) => (
             <SongCard
               key={song.key}
