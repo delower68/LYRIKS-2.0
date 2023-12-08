@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import PlayPause from "./PlayPause";
 import { playPause, setActiveSong } from "../redux/features/playerSlice";
 import { Link } from "react-router-dom";
-import { FaStar } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
 
 const SongCard = ({ song, i, isPlaying, activeSong, data }) => {
   const dispatch = useDispatch();
@@ -55,7 +55,7 @@ const SongCard = ({ song, i, isPlaying, activeSong, data }) => {
       <div className="mt-4 flex flex-col">
         <p className="font-semibold text-lg text-white truncate">
             {song.title}{" "}
-            <FaStar
+            <FaRegHeart
               className="ml-2 text-yellow-500 cursor-pointer"
               onClick={() => handleAddToFavorites(song)}
             />
