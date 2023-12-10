@@ -39,7 +39,9 @@ const FavouriteSongCard = ({ song, i, isPlaying, activeSong, data }) => {
       <div className="mt-4 flex flex-col">
         <p className="font-semibold text-lg text-white truncate">
           {song.title}{" "}
-          <FaStar className="ml-2 text-yellow-500 cursor-pointer" />
+        </p>
+        <p className="text-sm truncate text-gray-300 mt-1">
+        {song.subtitle}
         </p>
       </div>
     </div>
